@@ -32,6 +32,24 @@ Paper
 
 <a href="https://arxiv.org/abs/2004.01179" rel="Paper"><img src="thumb.jpg" alt="Paper" width="100%"></a>
 
+## Testing (on external image, for cuda 10.0
+
+Installation
+```
+conda create -n SingleHDR python=3.7
+conda activate SingleHDR
+conda install -c conda-forge cudatoolkit=10.0 cudnn=7.3.1
+pip install --upgrade pip
+pip3 install tensorflow-gpu==1.13.1 TensorLayer==1.11.0 opencv-python
+
+# Downgrade protobuf (tensorflow issue)
+pip3 install protobuf==3.20.*
+```
+
+Now, you need to download the checkpoints. Refer to the link below. Store then in ./
+
+Running: Follow instructions from below.
+
 ## Overview
 This is the author's reference implementation of the single-image HDR reconstruction using TensorFlow described in:
 "Single-Image HDR Reconstruction by Learning to Reverse the Camera Pipeline"

@@ -12,6 +12,8 @@ from util import apply_rf
 import numpy as np
 import cv2
 import glob
+from tqdm import tqdm
+
 
 FLAGS = tf.app.flags.FLAGS
 epsilon = 0.001
@@ -75,8 +77,7 @@ class Tester:
         ldr_imgs = glob.glob(os.path.join(path, '*.png'))
         ldr_imgs.extend(glob.glob(os.path.join(path, '*.jpg')))
         ldr_imgs = sorted(ldr_imgs)
-        for ldr_img_path in ldr_imgs:
-            print(ldr_img_path)
+        for ldr_img_path in tqdm(ldr_imgs, total=len(ldr_imgs), desc="Running SingleHDR [ft]..."):
             ldr_img = cv2.imread(ldr_img_path)
 
             ldr_val = np.flip(ldr_img, -1).astype(np.float32) / 255.0
